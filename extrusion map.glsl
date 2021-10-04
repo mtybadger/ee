@@ -16,13 +16,13 @@ vec3 lerp(vec3 colorone, vec3 colortwo, float value)
 
 void main() {
 	vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-    float fac = 2.5;
+    float fac = 0.005;
 	uv = uv * fac - (0.5 * fac);
     uv.x *= u_resolution.x / u_resolution.y;
 
 	//uv = (uv / (pow(u_time, 3.)) * 5.);
-    uv.x = uv.x - 0.2;
-    //uv.y = uv.y + 0.1;
+    uv.x = uv.x - 0.11;
+    uv.y = uv.y +0.902;
 
 
     // Time varying pixel color
@@ -30,7 +30,7 @@ void main() {
     
     float x = 0.;
     float y = 0.;
-    int iMax = 40;
+    int iMax = 150;
     int i = 0;
     float n = 2.;
     while(x*x + y*y <= 4. && i < iMax)
@@ -51,8 +51,7 @@ void main() {
     if(onLine){
         color = vec3(0.);
     } else {
-            float col = float(i + 1) - log(log(dist))/log(2.) - 3.;
-            color = vec3(pow(col, 2.)*0.0008);
+            color = vec3(ceil(float(i)/1.)*1./70.) - 0.2;
         
     }
     
